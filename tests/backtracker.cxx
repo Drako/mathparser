@@ -1,3 +1,9 @@
+/*************************************************************
+ * Copyright © 2015, Felix Bytow <felix.bytow@googlemail.com *
+ *                                                           *
+ * See the file COPYING for copying permissions.             *
+ *************************************************************/
+
 #include <mathparser/backtracker.hxx>
 
 #include <gtest/gtest.h>

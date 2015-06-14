@@ -6,6 +6,8 @@ CONFIGURE_FILE (
     ${CMAKE_CURRENT_SOURCE_DIR}/mathparser/config.hxx
 )
 
+ADD_DEFINITIONS ( ${CXX11_DEFINES} )
+
 INCLUDE_DIRECTORIES ( . )
 ADD_LIBRARY ( mathparser ${LIBRARY_TYPE} ${mp_SOURCES} ${mp_HEADERS} )
 

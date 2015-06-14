@@ -5,6 +5,8 @@ INCLUDE_DIRECTORIES ( ../mathparser )
 INCLUDE_DIRECTORIES ( ../contrib/gtest/include )
 INCLUDE_DIRECTORIES ( ../contrib/gmock/include )
 
+ADD_DEFINITIONS ( ${CXX11_DEFINES} )
+
 ADD_EXECUTABLE ( mathparser_test_app ${test_SOURCES} ${test_HEADERS} )
 TARGET_LINK_LIBRARIES ( mathparser_test_app mathparser gtest gmock )
 
