@@ -1,0 +1,5 @@
+IF ( WITH_TESTS )
+    ADD_SUBDIRECTORY ( gtest )
+    ADD_SUBDIRECTORY ( gmock )
+ENDIF ()
+

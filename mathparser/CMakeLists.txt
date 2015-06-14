@@ -1,0 +1,19 @@
+FILE ( GLOB_RECURSE mp_SOURCES *.cxx )
+FILE ( GLOB_RECURSE mp_HEADERS *.hxx )
+
+CONFIGURE_FILE (
+    ${CMAKE_CURRENT_SOURCE_DIR}/mathparser/config.hxx.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/mathparser/config.hxx
+)
+
+INCLUDE_DIRECTORIES ( . )
+ADD_LIBRARY ( mathparser ${LIBRARY_TYPE} ${mp_SOURCES} ${mp_HEADERS} )
+
+INSTALL (
+    TARGETS mathparser
+    RUNTIME DESTINATION lib
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+)
+INSTALL ( FILES ${mp_HEADERS} DESTINATION include/mathparser )
+

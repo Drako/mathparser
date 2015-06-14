@@ -1,0 +1,17 @@
+# cmake
+build*/
+config.hxx
+
+# qtcreator
+CMakeLists.txt.user
+
+# kdevelop
+*.kdev4
+.kdev4/
+
+# clion
+.idea/
+
+# temporaries
+*~
+
