@@ -14,7 +14,13 @@ class Optional
 {
 protected:
     mp::optional<int> invalid_;
-    mp::optional<int> valid_ = 42;
+    mp::optional<int> valid_;
+
+public:
+    Optional()
+        : valid_(42)
+    {
+    }
 };
 
 TEST_F(Optional, IsInvalidByDefault)
