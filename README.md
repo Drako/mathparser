@@ -27,8 +27,6 @@ make test
 [sudo] make install
 ```
 
-You can use `-DBUILD_SHARED=OFF` to build static libraries which might be neccessary
-when you wish to use some of the internal helper class templates.
 The installation path can be changed through `-DCMAKE_INSTALL_PREFIX:PATH={wherever you want it}`.
 
 # LICENSE
@@ -37,9 +35,9 @@ The installation path can be changed through `-DCMAKE_INSTALL_PREFIX:PATH={where
 
 # QUALITY
 
-Travis Build & Test:
+## Travis Build & Test:
 [![Build Status](https://travis-ci.org/Drako/mathparser.svg?branch=master)](https://travis-ci.org/Drako/mathparser)
 
-Coverity Code Analysis:
+## Coverity Code Analysis:
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/5479/badge.svg)](https://scan.coverity.com/projects/5479)
 

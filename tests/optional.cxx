@@ -9,43 +9,44 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-TEST(Optional, IsInvalidByDefault)
+class Optional
+    : public ::testing::Test
+{
+protected:
+    mp::optional<int> invalid_;
+    mp::optional<int> valid_ = 42;
+};
+
+TEST_F(Optional, IsInvalidByDefault)
 {
     using ::testing::Eq;
 
-    mp::optional<int> oi;
-    ASSERT_THAT(!oi, Eq(true));
+    EXPECT_THAT(!invalid_, Eq(true));
 }
 
-TEST(Optional, IsValidWhenSet)
+TEST_F(Optional, IsValidWhenSet)
 {
     using ::testing::Eq;
 
-    mp::optional<int> oi(42);
-    ASSERT_THAT(!oi, Eq(false));
+    EXPECT_THAT(!valid_, Eq(false));
 }
 
-TEST(Optional, BooleanValueMatchesValidity)
+TEST_F(Optional, BooleanValueMatchesValidity)
 {
     using ::testing::Eq;
 
-    mp::optional<int> invalid;
-    ASSERT_THAT(static_cast<bool>(invalid), Eq(false));
-
-    mp::optional<int> valid(42);
-    ASSERT_THAT(static_cast<bool>(valid), Eq(true));
+    EXPECT_THAT(static_cast<bool>(invalid_), Eq(false));
+    EXPECT_THAT(static_cast<bool>(valid_), Eq(true));
 }
 
-TEST(Optional, ThrowsWhenDereferencingInvalid)
+TEST_F(Optional, ThrowsWhenDereferencingInvalid)
 {
-    mp::optional<int> invalid;
-    ASSERT_THROW(*invalid, std::runtime_error);
+    EXPECT_THROW(*invalid_, mp::exception);
 }
 
-TEST(Optional, ReturnsValueWhenDereferenced)
+TEST_F(Optional, ReturnsValueWhenDereferenced)
 {
     using ::testing::Eq;
 
-    mp::optional<int> oi(42);
-    ASSERT_THAT(*oi, Eq(42));
+    EXPECT_THAT(*valid_, Eq(42));
 }

@@ -8,6 +8,7 @@
 #define MATHPARSER_INTPARSER_HXX
 
 #include "backtracker.hxx"
+#include "exception.hxx"
 #include "optional.hxx"
 
 #include <cctype>
@@ -18,7 +19,7 @@ namespace mp
     {
     public:
         template <typename Iterator>
-        optional<int> parse(Iterator & it, Iterator end)
+        static optional<int> parse(Iterator & it, Iterator end)
         {
             backtracker<Iterator> bt(it);
 
@@ -31,7 +32,7 @@ namespace mp
                 n *= 10;
                 n += *it++ - '0';
                 if (n < 0)
-                    throw std::runtime_error("literal too big");
+                    throw exception("literal too big");
             }
 
             bt.disable();

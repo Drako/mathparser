@@ -8,8 +8,9 @@
 #define MATHPARSER_OPTIONAL_HXX
 
 #include <memory>
-#include <stdexcept>
 #include <utility>
+
+#include "exception.hxx"
 
 namespace mp
 {
@@ -62,7 +63,7 @@ namespace mp
         T & operator * () const
         {
             if (value_ == nullptr)
-                throw std::runtime_error("dereferencing empty optional");
+                throw exception("dereferencing empty optional");
             return *value_;
         }
 

@@ -18,9 +18,8 @@ TEST(IntParser, ReturnsInvalidWhenNotStartingWithDigit)
     std::string not_a_number("a");
     auto it = not_a_number.begin();
 
-    mp::intparser parser;
-    auto result = parser.parse(it, not_a_number.end());
-    ASSERT_THAT(!result, Eq(true));
+    auto result = mp::intparser::parse(it, not_a_number.end());
+    EXPECT_THAT(!result, Eq(true));
 }
 
 TEST(IntParser, StopsOnInvalidCharacter)
@@ -31,10 +30,9 @@ TEST(IntParser, StopsOnInvalidCharacter)
     std::string partial_number("23alpha");
     auto it = partial_number.begin();
 
-    mp::intparser parser;
-    auto result = parser.parse(it, partial_number.end());
-    ASSERT_THAT(*result, Eq(23));
-    ASSERT_THAT(it, Ne(partial_number.end()));
+    auto result = mp::intparser::parse(it, partial_number.end());
+    EXPECT_THAT(*result, Eq(23));
+    EXPECT_THAT(it, Ne(partial_number.end()));
 }
 
 TEST(IntParser, ThrowsOnTooLargeLiteral)
@@ -42,8 +40,7 @@ TEST(IntParser, ThrowsOnTooLargeLiteral)
     std::string big_number("762395876395876234978623984763498527985702397503428975");
     auto it = big_number.begin();
 
-    mp::intparser parser;
-    ASSERT_THROW(parser.parse(it, big_number.end()), std::runtime_error);
+    EXPECT_THROW(mp::intparser::parse(it, big_number.end()), mp::exception);
 }
 
 TEST(IntParser, ParsesCompleteNumber)
@@ -53,8 +50,7 @@ TEST(IntParser, ParsesCompleteNumber)
     std::string number("42");
     auto it = number.begin();
 
-    mp::intparser parser;
-    auto result = parser.parse(it, number.end());
-    ASSERT_THAT(*result, Eq(42));
-    ASSERT_THAT(it, Eq(number.end()));
+    auto result = mp::intparser::parse(it, number.end());
+    EXPECT_THAT(*result, Eq(42));
+    EXPECT_THAT(it, Eq(number.end()));
 }

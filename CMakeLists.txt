@@ -9,15 +9,17 @@ INCLUDE ( CheckCxx11 )
 CXX11_REQUIRE_FEATURES ()
 
 # customizations
-OPTION ( BUILD_SHARED "Build shared library" ON )
+# OPTION ( BUILD_SHARED "Build shared library" ON )
 OPTION ( WITH_EXAMPLE "Build the example" OFF )
 OPTION ( WITH_TESTS "Build tests" OFF )
 
-IF ( BUILD_SHARED )
-    SET ( LIBRARY_TYPE SHARED )
-ELSE ()
-    SET ( LIBRARY_TYPE STATIC )
-ENDIF ()
+# for now only static builds
+# templates don't play that well with dlls
+#IF ( BUILD_SHARED )
+#    SET ( LIBRARY_TYPE SHARED )
+#ELSE ()
+#    SET ( LIBRARY_TYPE STATIC )
+#ENDIF ()
 
 # external dependencies
 IF ( WITH_TESTS )
