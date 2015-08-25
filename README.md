@@ -13,8 +13,9 @@ Lets see how far my motivation to bring this to life will stay with me :)
 * CMake (>= 2.8.11)
 * (optional) Doxygen for documentation generation
 
-Google Test and Google Mock are bundled with the source code and are only used,
-when building the test suite.
+Google Test and Google Mock are included as submodules.
+They are only required to build the unit tests.
+You may need to call `git submodule update --init` to get them working.
 
 # Build & Installation
 
