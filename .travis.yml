@@ -9,6 +9,10 @@ compiler:
     - clang
     - gcc
 
+before_script:
+    - alias gcc=gcc-5
+    - alias g++=g++-5
+
 script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then mkdir -p build; cd build; ../cmake-3.3.1-Linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=ON -DWITH_EXAMPLE=ON ..; make && make test; fi
 
 env:
@@ -16,6 +20,11 @@ env:
         - secure: "PC8dKORHfB0cDKSq1Hgx41qBq7WI+8DK7/vX7XK9lelpVa2toytXDYmAHMkiuaWXNtPRyjEolQHlqOc+DGSIldWPnW0n3cfr/u/ZCn5VI5RnZWhnqUHytIe1G3MDOxHxYd7V2io97/a7mmFQLCC9xGtikFz8XCyem4Bkfj7WUqgXYCaKGUo0QP+il/IVX3Z/W/I3IDZuyEkGd6KgKSSBKaYo9vCqa2aOeIeUgnsrjSJn7Z8ViG1pb5QTcGm/fYn6JxAuvonooVN5omF4J9eyRSe7cJ4MH9OMCQxllMtOdEUXIXZPsmCvV8GTZ+DqS+SQYj9D4L5OSHjkX9HOxEboC9XViz1WHaRPedDfcm8foZB4hkcqkXLm7LOJYq1lGim5zwC2qPtvGhNHnkVD8dMsUR4i23IIm1umI9a7Yrvyp9cKzw9oE6o5QThZgLWFwglyI4vUySedtEA3HNGgn7U2CCw9dcX5xMT8C+C4fLumPu4Eq3oitMJBjd9cAvh/d0e3ApKxJV6LSBTm4aqkIG1irVNtzFZebLCjcgpCK9AWarMkofcONF14apr2SmYPki77bJ8cK+h75K0mR0JxwTon+b1dTPSB7Z2x4LfzV9c2oGLea3SesuHmBi7FuD/vN6K/JQoeMzovI67XM/QwY2KcdPOdGrW9h6G3YUtDNkRxQUc="
 
 addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - gcc-5
     coverity_scan:
         project:
             name: "Drako/mathparser"
