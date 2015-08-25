@@ -8,6 +8,10 @@ install:
 compiler:
     - gcc
 
+before_script:
+    - export CC=gcc-5
+    - export CXX=g++-5
+
 script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then mkdir -p build; cd build; ../cmake-3.3.1-Linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=ON -DWITH_EXAMPLE=ON ..; make && make test; fi
 
 env:
@@ -19,7 +23,8 @@ addons:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - gcc-defaults
+            - gcc-5
+            - g++-5
     coverity_scan:
         project:
             name: "Drako/mathparser"
