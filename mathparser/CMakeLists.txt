@@ -1,22 +1,29 @@
-FILE ( GLOB_RECURSE mp_SOURCES *.cxx )
-FILE ( GLOB_RECURSE mp_HEADERS *.hxx )
-
-CONFIGURE_FILE (
+configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/mathparser/config.hxx.in
     ${CMAKE_CURRENT_SOURCE_DIR}/mathparser/config.hxx
 )
 
-ADD_DEFINITIONS ( ${CXX11_DEFINES} )
+set(mp_SOURCES
+    exception.cxx
+)
 
-INCLUDE_DIRECTORIES ( . )
-# ADD_LIBRARY ( mathparser ${LIBRARY_TYPE} ${mp_SOURCES} ${mp_HEADERS} )
-ADD_LIBRARY ( mathparser STATIC ${mp_SOURCES} ${mp_HEADERS} )
+set(mp_HEADERS
+    mathparser/backtracker.hxx
+    mathparser/config.hxx
+    mathparser/exception.hxx
+    mathparser/intparser.hxx
+    mathparser/optional.hxx
+)
 
-INSTALL (
-    TARGETS mathparser
+add_library(mathparser STATIC ${mp_SOURCES} ${mp_HEADERS})
+add_library(mathparser::lib ALIAS mathparser)
+
+target_include_directories(mathparser INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+
+install(
+    TARGETS mathparser::lib
     RUNTIME DESTINATION lib
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
 )
-INSTALL ( FILES ${mp_HEADERS} DESTINATION include/mathparser )
-
+install(FILES ${mp_HEADERS} DESTINATION include/mathparser)

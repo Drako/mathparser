@@ -1,5 +1,0 @@
-INCLUDE_DIRECTORIES ( . )
-INCLUDE_DIRECTORIES ( ./include )
-INCLUDE_DIRECTORIES ( ../gtest/include )
-ADD_LIBRARY ( gmock STATIC src/gmock-all.cc )
-TARGET_LINK_LIBRARIES ( gmock gtest )

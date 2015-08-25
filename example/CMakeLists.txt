@@ -1,8 +1,4 @@
-ADD_DEFINITIONS ( ${CXX11_DEFINES} )
+add_executable(parsemath main.cxx)
+add_executable(mathparser::example ALIAS parsemath)
 
-INCLUDE_DIRECTORIES ( ../mathparser )
-ADD_EXECUTABLE ( parsemath main.cxx )
-TARGET_LINK_LIBRARIES ( parsemath mathparser )
-
-INSTALL ( TARGETS parsemath DESTINATION bin )
-
+target_link_libraries(parsemath PRIVATE mathparser)
