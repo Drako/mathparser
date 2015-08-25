@@ -3,13 +3,13 @@ language: cpp
 sudo: false
 
 install:
-    - wget -qO- http://www.cmake.org/files/v3.1/cmake-3.1.3-Linux-x86_64.tar.gz | tar xvz
+    - wget -qO- http://www.cmake.org/files/v3.3/cmake-3.3.1-Linux-x86_64.tar.gz | tar xvz
 
 compiler:
     - clang
     - gcc
 
-script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then mkdir -p build; cd build; ../cmake-3.1.3-Linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=ON -DWITH_EXAMPLE=ON ..; make && make test; fi
+script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then mkdir -p build; cd build; ../cmake-3.3.1-Linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=ON -DWITH_EXAMPLE=ON ..; make && make test; fi
 
 env:
     global:
@@ -24,4 +24,3 @@ addons:
         build_command_prepend: "cmake -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=ON . && make gtest gmock"
         build_command:   "make mathparser mathparser_test_app"
         branch_pattern: coverity_scan
-
