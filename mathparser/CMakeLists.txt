@@ -18,10 +18,13 @@ set(mp_HEADERS
 add_library(mathparser STATIC ${mp_SOURCES} ${mp_HEADERS})
 add_library(mathparser::lib ALIAS mathparser)
 
-target_include_directories(mathparser INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(mathparser PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_compile_features(mathparser
+    PUBLIC cxx_explicit_conversions cxx_nullptr cxx_rvalue_references
+)
 
 install(
-    TARGETS mathparser::lib
+    TARGETS mathparser
     RUNTIME DESTINATION lib
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
