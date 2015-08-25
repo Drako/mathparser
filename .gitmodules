@@ -1,6 +1,6 @@
 [submodule "contrib/gtest"]
 	path = contrib/gtest
-	url = git@github.com:Drako/gtest.git
+	url = git://github.com/Drako/gtest.git
 [submodule "contrib/gmock"]
 	path = contrib/gmock
-	url = git@github.com:Drako/gmock.git
+	url = git://github.com/Drako/gmock.git
