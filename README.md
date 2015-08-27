@@ -10,7 +10,7 @@ Lets see how far my motivation to bring this to life will stay with me :)
 # REQUIREMENTS
 
 * A recent C++ compiler
-* CMake (>= 2.8.11)
+* CMake (>= 3.1)
 * (optional) Doxygen for documentation generation
 
 Google Test and Google Mock are included as submodules.
